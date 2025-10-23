@@ -12,7 +12,6 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Jika user sudah login, langsung ke dashboard
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) router.replace("/dashboard");
@@ -24,7 +23,7 @@ export default function RegisterPage() {
     try {
       await api.post("/auth/register", { name, email, password });
       toast.success("Registration successful! Please login.");
-      router.push("/login"); // redirect ke login
+      router.push("/login");
     } catch (err) {
       toast.error("Registration failed. Try again.");
       console.error(err);
@@ -78,7 +77,6 @@ export default function RegisterPage() {
           {loading ? "Registering..." : "Register"}
         </button>
 
-        {/* Tombol ke Login */}
         <p className="text-center text-gray-500">
           Already have an account?{" "}
           <button

@@ -11,7 +11,6 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Jika token sudah ada, langsung ke dashboard
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) router.replace("/dashboard");
@@ -25,7 +24,7 @@ export default function LoginPage() {
       if (res.data.token) {
         localStorage.setItem("token", res.data.token);
         toast.success("Login successful!");
-        router.push("/dashboard"); // redirect ke dashboard
+        router.push("/dashboard");
       }
     } catch (err) {
       toast.error("Login failed. Please check your credentials.");
@@ -71,7 +70,6 @@ export default function LoginPage() {
           {loading ? "Signing In..." : "Sign In"}
         </button>
 
-        {/* Tombol ke Register */}
         <p className="text-center text-gray-500">
           Don't have an account?{" "}
           <button

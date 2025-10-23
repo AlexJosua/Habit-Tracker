@@ -23,7 +23,7 @@ interface Habit {
   current_streak: number;
   longest_streak: number;
   start_date: string;
-  checkins: string[]; // array tanggal check-in
+  checkins: string[];
 }
 
 export default function DashboardPage() {
@@ -106,7 +106,6 @@ export default function DashboardPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-8">
       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg p-6">
-        {/* Header */}
         <div className="flex justify-between items-center mb-8 border-b pb-4">
           <div>
             <h1 className="text-3xl font-bold text-gray-800">
@@ -133,8 +132,6 @@ export default function DashboardPage() {
             </button>
           </div>
         </div>
-
-        {/* Habits Section */}
         {habits.length === 0 ? (
           <div className="text-center py-10 text-gray-600">
             <p className="text-lg">
@@ -192,7 +189,6 @@ export default function DashboardPage() {
 
                   {isExpanded && (
                     <div className="mt-2 space-y-4">
-                      {/* Description */}
                       <div className="p-2 bg-gray-100 rounded-lg text-gray-700 text-sm">
                         <p>
                           <span className="font-semibold">Description:</span>{" "}
@@ -204,7 +200,6 @@ export default function DashboardPage() {
                         </p>
                       </div>
 
-                      {/* Calendar */}
                       <div className="p-2 bg-gray-100 rounded-lg">
                         <h3 className="font-medium mb-2">Completed Days</h3>
                         <Calendar
@@ -213,16 +208,14 @@ export default function DashboardPage() {
                               const dateStr = date.toISOString().split("T")[0];
 
                               if (habit.checkins.includes(dateStr)) {
-                                return "bg-green-500 text-white rounded-full"; // hari check-in
+                                return "bg-green-500 text-white rounded-full";
                               }
 
-                              // Weekday (Senin - Jumat)
                               const day = date.getDay();
                               if (day >= 1 && day <= 5) {
-                                return "bg-gray-700 text-black rounded-full"; // weekday gelap
+                                return "bg-gray-700 text-black rounded-full";
                               }
 
-                              // Weekend (Sabtu & Minggu)
                               return "bg-gray-400 text-black rounded-full";
                             }
                             return "";
@@ -230,7 +223,6 @@ export default function DashboardPage() {
                         />
                       </div>
 
-                      {/* Chart */}
                       <div className="p-2 bg-gray-100 rounded-lg">
                         <h3 className="font-medium mb-2">Progress Chart</h3>
                         {chartData.length > 0 ? (

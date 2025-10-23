@@ -55,7 +55,6 @@ export default function CreateHabitPage() {
           Create
         </button>
 
-        {/* Tambahan teks "Back to Dashboard" */}
         <p className="text-center text-sm text-gray-600 mt-4">
           <span
             onClick={() => router.push("/dashboard")}
